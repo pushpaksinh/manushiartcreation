@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manushi Art Creation | Premium Resin Art Studio</title>
+    <style>
+        /* --- Reset & Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #faf9f6;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        a {
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        /* --- Global Components --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #333;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border-color: #fff;
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background-color: #fff;
+            color: #1a1a1a;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Header Navigation --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-menu a {
+            color: #555;
+            font-weight: 500;
+        }
+        .nav-menu a:hover {
+            color: #000;
+        }
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* --- Section 1: Hero Showcase --- */
+        .hero {
+            height: calc(100vh - 80px);
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-size: 56px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* --- Section 2: Core Collections --- */
+        .collections {
+            padding: 80px 0;
+        }
+        .grid-collections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .collection-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            background-color: #e5e5e5;
+        }
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .collection-card:hover img {
+            transform: scale(1.05);
+        }
+        .collection-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: #fff;
+        }
+        .collection-overlay h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Section 3: Artistry & Process --- */
+        .process {
+            padding: 80px 0;
+            background-color: #f0ede6;
+        }
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .split-media, .split-text {
+            flex: 1;
+        }
+        .split-media img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .split-text h2 {
+            font-size: 36px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .split-text p {
+            margin-bottom: 30px;
+            color: #444;
+            font-size: 16px;
+        }
+
+        /* --- Section 4: Featured Masterpieces --- */
+        .featured {
+            padding: 80px 0;
+        }
+        .product-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        .product-img-wrapper {
+            height: 300px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            margin-bottom: 15px;
+        }
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-card h4 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            padding: 0 10px;
+        }
+        .product-price {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* --- Section 5: Custom Commission Steps --- */
+        .commissions {
+            padding: 80px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+        .commission-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 50px 0;
+        }
+        .step {
+            flex: 1;
+            padding: 20px;
+        }
+        .step-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #888;
+        }
+        .step h3 {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .step p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 60px 0 30px 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(2, 1fr) 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h5 {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .footer-col p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: #aaa;
+            font-size: 13px;
+        }
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #222;
+            color: #fff;
+        }
+        .newsletter-form button {
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #111;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* --- Responsive Optimization --- */
+        @media (max-width: 968px) {
+            .split-layout {
+                flex-direction: column;
+            }
+            .commission-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-content h1 {
+                font-size: 38px;
+            }
+        }
+        @media (max-width: 600px) {
+            .nav-menu {
+                display: none;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">MANUSHI ART CREATION</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Commissions</a></li>
+                    <li><a href="#">Our Story</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <span style="cursor:pointer;">🔍</span>
+                <span style="cursor:pointer; margin-left: 15px;">🛒 (0)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Hero Showcase -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Liquid Glass. Timeless Art.</h1>
+            <p>Handcrafted, ultra-detailed resin creations designed by Manushi Art Creation to bring depth and vibrant color into your space.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn btn-primary">Explore Collection</a>
+                <a href="#" class="btn btn-secondary">Custom Commission</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Core Collections -->
+    <section class="collections container">
+        <h2 class="section-title">Browse Our Creations</h2>
+        <div class="grid-collections">
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600" alt="Resin Wall Art">
+                <div class="collection-overlay">
+                    <h3>Resin Wall Art</h3>
+                    <div><a href="#" class="btn btn-secondary" style="padding: 8px 20px;">Shop Art</a></div>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=600" alt="Live Edge Furniture">
+                <div class="collection-overlay">
+                    <h3>Live Edge Furniture</h3>
+                    <div><a href="#" class="btn btn-secondary" style="padding: 8px 20px;">Explore Tables</a></div>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1610701596007-11502861afaa?q=80&w=600" alt="Home Decor Accents">
+                <div class="collection-overlay">
+                    <h3>Home Decor & Accents</h3>
+                    <div><a href="#" class="btn btn-secondary" style="padding: 8px 20px;">Shop Decor</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Artistry & Process -->
+    <section class="process">
+        <div class="container split-layout">
+            <div class="split-media">
+                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600" alt="Artist working with resin">
+            </div>
+            <div class="split-text">
+                <h2>Crafted Layer by Layer</h2>
+                <p>Every single pour at Manushi Art Creation is engineered with highly specialized scratch-resistant, UV-stabilized resin formulas. Through multiple fluid layers, deep color pigments, and precise chemical interactions, we freeze vibrant motion under a crystal-clear, glass-like finish that remains pristine over decades.</p>
+                <a href="#" class="btn btn-primary">Meet the Artist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Featured Masterpieces -->
+    <section class="featured container">
+        <h2 class="section-title">Featured Masterpieces</h2>
+        <div class="product-carousel">
+            <div class="product-card">
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=400" alt="Product"></div>
+                <h4>“Deep Aegean Sea” Canvas</h4>
+                <div class="product-price">$340.00</div>
+                <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 11px;">Add To Cart</a>
+            </div>
+            <div class="product-card">
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=400" alt="Product"></div>
+                <h4>Emerald Geode Coaster Set</h4>
+                <div class="product-price">$85.00</div>
+                <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 11px;">Add To Cart</a>
+            </div>
+            <div class="product-card">
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?q=80&w=400" alt="Product"></div>
+                <h4>Metallic Nebula Serving Tray</h4>
+                <div class="product-price">$120.00</div>
+                <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 11px;">Add To Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Custom Commissions -->
+    <section class="commissions">
+        <div class="container">
+            <h2 class="section-title">Bring Your Vision to Life</h2>
+            <p style="color: #666; max-width:600px; margin: 0 auto;">Need specific dimensions, a custom color palette, or a statement piece live-edge river table? Let's collaborate directly.</p>
+            
+            <div class="commission-steps">
+                <div class="step">
+                    <div class="step-icon">💬</div>
+                    <h3>1. Consultation</h3>
+                    <p>Map out your dimensional needs, specific wood slabs, and custom pigment tones together.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🔥</div>
+                    <h3>2. The Creation</h3>
+                    <p>Receive systematic studio updates and layout confirmation photos during the curing process.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📦</div>
+                    <h3>3. Safe Delivery</h3>
+                    <p>Your finished piece is crated securely and delivered straight to your home interior.</p>
+                </div>
+            </div>
+
+            <a href="#" class="btn btn-primary">Start Your Custom Order</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color:#fff; margin-bottom:15px;">MANUSHI ART CREATION</div>
+                <p>Designing modern luxury fluid artworks and high-gloss statement furniture assets for custom collectors globally.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="#">Shop All</a></li>
+                    <li><a href="#">Custom Process</a></li>
+                    <li><a href="#">Studio Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Care & Support</h5>
+                <ul>
+                    <li><a href="#">Resin Maintenance Guide</a></li>
+                    <li><a href="#">Shipping Profiles</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Collector's List</h5>
+                <p>Secure early access to drop notices and behind-the-scenes pours.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <div>&copy; 2026 Manushi Art Creation. All rights reserved.</div>
+            <div>Privacy Policy &bull; Terms of Service</div>
+        </div>
+    </footer>
+
+</body>
+</html>
